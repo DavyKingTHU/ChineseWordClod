@@ -2,21 +2,21 @@ from wordcloud import WordCloud, STOPWORDS
 from PIL import Image
 import numpy as np
 import matplotlib
-matplotlib.use('TkAgg')
+# matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import jieba.analyse
 
 paper = open("data/paper.txt",encoding="UTF-8").read()
 
-mask = np.array(Image.open('yellow-house-hi.png'))
+mask = np.array(Image.open('dj.png'))
 
-font = r'C:\Windows\Fonts\simfang.ttf'
+font = r'C:\Windows\Fonts\simhei.ttf'
 
 # This function takes in your text and your mask and generates a wordcloud.
 
 def generate_wordcloud(tags, mask):
 
-    word_cloud = WordCloud(width = 512, height = 512, background_color='white', font_path=font,stopwords=STOPWORDS, mask=mask)
+    word_cloud = WordCloud(width = 512, height = 512,random_state =10, background_color='white', font_path=font,stopwords=STOPWORDS, mask=mask)
 
     word_cloud.generate_from_frequencies(tags)
 
@@ -42,7 +42,7 @@ def tokenize_content(content):
 
     jieba.analyse.set_stop_words("data/stop_words.txt")
 
-    tags = jieba.analyse.extract_tags(content, topK=10, withWeight=True)
+    tags = jieba.analyse.extract_tags(content, topK=50, withWeight=True)
 
     word_tokens_rank = dict()
 
