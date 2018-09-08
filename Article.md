@@ -77,7 +77,7 @@ def generate_wordcloud(tags, mask):
 
 
 
-####注意的事项：
+#### 注意的事项：
 1：注意如果使用的是苹果电脑，macOSX系统。需要在引包的时候添加
 ```
 import matplotlib
