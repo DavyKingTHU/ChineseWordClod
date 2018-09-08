@@ -6,21 +6,22 @@ import matplotlib
 import matplotlib.pyplot as plt
 import jieba.analyse
 
-paper = open("data/paper.txt",encoding="UTF-8").read()
+paper = open("data/paper.txt", encoding="UTF-8").read()
 
 mask = np.array(Image.open('dj.png'))
 
 font = r'C:\Windows\Fonts\simhei.ttf'
 
+
 # This function takes in your text and your mask and generates a wordcloud.
 
 def generate_wordcloud(tags, mask):
-
-    word_cloud = WordCloud(width = 512, height = 512,random_state =10, background_color='white', font_path=font,stopwords=STOPWORDS, mask=mask)
+    word_cloud = WordCloud(width=512, height=512, random_state=10, background_color='white', font_path=font,
+                           stopwords=STOPWORDS, mask=mask)
 
     word_cloud.generate_from_frequencies(tags)
 
-    plt.figure(figsize=(10,8),facecolor = 'white', edgecolor='blue')
+    plt.figure(figsize=(10, 8), facecolor='white', edgecolor='blue')
 
     plt.imshow(word_cloud)
 
@@ -30,8 +31,8 @@ def generate_wordcloud(tags, mask):
 
     plt.show()
 
-def tokenize_content(content):
 
+def tokenize_content(content):
     """
 
         1：去停用词
@@ -47,13 +48,13 @@ def tokenize_content(content):
     word_tokens_rank = dict()
 
     for tag in tags:
-
         word_tokens_rank[tag[0]] = tag[1]
 
     return word_tokens_rank
 
+
 tags = (tokenize_content(paper))
 
-#Run the following to generate your wordcloud
+# Run the following to generate your wordcloud
 
 generate_wordcloud(tags, mask)
