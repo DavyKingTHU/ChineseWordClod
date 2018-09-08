@@ -55,7 +55,7 @@ def tokenize_content(content):
 ```
 &nbsp; 第一步还是去掉一些停用词，例如口语词汇或者意义不大的词，停用词可以自定义，在data目录下的stop_words.txt中。
 
-&nbsp; 第二步 按照权重抽取前50个词，并变成词典的形式。
+&nbsp; 第二步 按照权重抽取前50个词，并转换成词典的形式。
 #### b)用上面的生成的字典，传入word_cloud生成最后的效果
 ```
 def generate_wordcloud(tags, mask):
